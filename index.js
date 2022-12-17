@@ -22,6 +22,8 @@ webpush.setVapidDetails(
   privateVapidKey
 );
 
+let counter=0;
+
 // Subscribe Route
 app.post("/subscribe", (req, res) => {
   // Get pushSubscription object
@@ -39,6 +41,11 @@ app.post("/subscribe", (req, res) => {
     .sendNotification(subscription, payload)
     .catch(err => console.error(err));
 });
+
+app.get("/count", (req, res) => {
+  counter++;
+  res.send(`<h1>${counter}</h1>`);
+})
 
 const port = process.env.PORT || 5000;;
 
