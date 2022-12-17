@@ -34,6 +34,7 @@ app.post("/subscribe", (req, res) => {
   const payload = JSON.stringify({ title: "Push Test" });
 
   // Pass object into sendNotification
+  console.log(subscription);
   webpush
     .sendNotification(subscription, payload)
     .catch(err => console.error(err));
